@@ -48,7 +48,7 @@ export const RootLayout: FC<PropsWithChildren> = async ({ children }) => {
           locale={locale}
           resources={i18n.resources}
         >
-          <Layout>{children}</Layout>
+          <Layout locale={locale}>{children}</Layout>
         </TranslationsProvider>
       </ThemeProvider>
     </html>

@@ -1,7 +1,7 @@
 'use client'
 import type { FC, PropsWithChildren } from 'react'
 
-import { useMemo, useEffect, useState } from 'react'
+import { useMemo, useState, createContext, useContext } from 'react'
 
 import * as locales from '@mui/material/locale'
 
@@ -9,45 +9,41 @@ import {
   createTheme,
   ThemeProvider as MuiThemeProvider
 } from '@mui/material/styles'
-import { dark, light } from 'styles/theme'
 
-const THEME_STORAGE_KEY = 'user-theme-preference'
+import { dark, light } from 'styles/theme'
 
 interface ThemeProviderProps extends PropsWithChildren {
   locale: string
 }
 
+const ThemeSwitchContext = createContext<{
+  toggleColorMode?: () => void
+}>({})
+
 type themeModes = 'light' | 'dark'
 
+export const useThemeSwitch = () => {
+  return useContext(ThemeSwitchContext)
+}
+
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children, locale }) => {
-  const [themeMode, setThemeMode] = useState<themeModes>()
+  const [mode, setMode] = useState<themeModes>('light')
 
-  useEffect(() => {
-    const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY)
-    setThemeMode((savedTheme || 'dark') as themeModes)
-  }, [])
-
-  useEffect(() => {
-    const handleStorageChange = (event: StorageEvent) => {
-      if (
-        event.storageArea === localStorage &&
-        event.key === THEME_STORAGE_KEY
-      ) {
-        setThemeMode(event.newValue as themeModes)
-      }
-    }
-
-    window.addEventListener('storage', handleStorageChange)
-    return () => {
-      window.removeEventListener('storage', handleStorageChange)
-    }
-  }, [])
+  const toggleColorMode = () => {
+    setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'))
+  }
 
   const themeWithLocale = useMemo(() => {
-    const theme = themeMode === 'dark' ? dark : light
+    const theme = mode === 'dark' ? dark : light
 
     return createTheme(theme, locales[locale === 'en' ? 'enUS' : 'csCZ'])
-  }, [themeMode, locale])
+  }, [mode, locale])
 
-  return <MuiThemeProvider theme={themeWithLocale}>{children}</MuiThemeProvider>
+  return (
+    <MuiThemeProvider theme={themeWithLocale}>
+      <ThemeSwitchContext.Provider value={{ toggleColorMode }}>
+        {children}
+      </ThemeSwitchContext.Provider>
+    </MuiThemeProvider>
+  )
 }

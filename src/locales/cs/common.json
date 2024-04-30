@@ -1,9 +1,3 @@
 {
-  "pageTitle": "Hlavní stránka",
-
-  "locale": {
-    "label": "Jazyk",
-    "en": "Angličtina",
-    "cs": "Čeština"
-  }
+  "pageTitle": "Hlavní stránka"
 }
