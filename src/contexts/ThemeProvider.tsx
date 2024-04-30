@@ -20,18 +20,12 @@ interface ThemeProviderProps extends PropsWithChildren {
 type themeModes = 'light' | 'dark'
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children, locale }) => {
-  const [themeMode, setThemeMode] = useState<themeModes>(
-    (() => {
-      const defaultTheme = 'dark'
+  const [themeMode, setThemeMode] = useState<themeModes>()
 
-      if (localStorage) {
-        const storedTheme = localStorage.getItem(THEME_STORAGE_KEY)
-        return storedTheme ? (storedTheme as themeModes) : defaultTheme
-      }
-
-      return defaultTheme
-    })()
-  )
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY)
+    setThemeMode((savedTheme || 'dark') as themeModes)
+  }, [])
 
   useEffect(() => {
     const handleStorageChange = (event: StorageEvent) => {
