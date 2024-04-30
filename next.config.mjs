@@ -1,4 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  reactStrictMode: true,
+  productionBrowserSourceMaps: true,
 
-export default nextConfig;
+  async redirects() {
+    return [{ source: '/', destination: '/cs', permanent: true }]
+  }
+}
+
+export default nextConfig
