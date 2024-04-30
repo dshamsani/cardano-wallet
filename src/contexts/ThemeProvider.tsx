@@ -10,7 +10,7 @@ import {
   ThemeProvider as MuiThemeProvider
 } from '@mui/material/styles'
 
-import { dark, light } from 'styles/theme'
+import { dark, light } from 'styles/theme/theme'
 
 interface ThemeProviderProps extends PropsWithChildren {
   locale: string
