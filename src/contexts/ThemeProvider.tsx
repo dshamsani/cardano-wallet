@@ -1,7 +1,7 @@
 'use client'
 import type { FC, PropsWithChildren } from 'react'
 
-import { useMemo } from 'react'
+import { useMemo, useEffect, useState } from 'react'
 
 import * as locales from '@mui/material/locale'
 
@@ -11,15 +11,49 @@ import {
 } from '@mui/material/styles'
 import { dark, light } from 'styles/theme'
 
+const THEME_STORAGE_KEY = 'user-theme-preference'
+
 interface ThemeProviderProps extends PropsWithChildren {
   locale: string
 }
 
+type themeModes = 'light' | 'dark'
+
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children, locale }) => {
-  const themeWithLocale = useMemo(
-    () => createTheme(dark, locales[locale === 'en' ? 'enUS' : 'csCZ']),
-    [locale]
+  const [themeMode, setThemeMode] = useState<themeModes>(
+    (() => {
+      const defaultTheme = 'dark'
+
+      if (localStorage) {
+        const storedTheme = localStorage.getItem(THEME_STORAGE_KEY)
+        return storedTheme ? (storedTheme as themeModes) : defaultTheme
+      }
+
+      return defaultTheme
+    })()
   )
+
+  useEffect(() => {
+    const handleStorageChange = (event: StorageEvent) => {
+      if (
+        event.storageArea === localStorage &&
+        event.key === THEME_STORAGE_KEY
+      ) {
+        setThemeMode(event.newValue as themeModes)
+      }
+    }
+
+    window.addEventListener('storage', handleStorageChange)
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+    }
+  }, [])
+
+  const themeWithLocale = useMemo(() => {
+    const theme = themeMode === 'dark' ? dark : light
+
+    return createTheme(theme, locales[locale === 'en' ? 'enUS' : 'csCZ'])
+  }, [themeMode, locale])
 
   return <MuiThemeProvider theme={themeWithLocale}>{children}</MuiThemeProvider>
 }
