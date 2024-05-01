@@ -10,20 +10,12 @@ const light = createTheme({
       main: '#e91e63'
     },
     background: {
-      default: '#f7f9fc',
+      default: '#f0f0f0',
       paper: '#ffffff'
     },
     text: {
       primary: '#333333',
       secondary: '#555555'
-    }
-  },
-  typography: {
-    fontFamily: 'Roboto, Arial, sans-serif',
-    h1: {
-      fontSize: '2rem',
-      fontWeight: 'bold',
-      color: '#333333'
     }
   }
 })

@@ -21,14 +21,22 @@ export const LayoutHeader: FC<LayoutHeaderProps> = ({
   toggleColorMode
 }) => {
   const {
-    palette: { mode }
+    palette: {
+      mode,
+      background: { default: defaultColor },
+      text: { primary }
+    }
   } = useTheme()
 
   return (
     <AppBar
       position="static"
       color="transparent"
-      sx={{ backdropFilter: 'blur(10px)' }}
+      sx={{
+        backdropFilter: 'blur(10px)',
+        color: primary,
+        backgroundColor: defaultColor
+      }}
     >
       <Toolbar>
         <Button color="inherit" onClick={changeLocale}>
