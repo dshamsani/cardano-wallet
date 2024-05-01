@@ -2,6 +2,8 @@ import type { FC } from 'react'
 import type { Page } from 'types/page'
 
 import { TranslationsProvider } from 'contexts/TranslationsProvider'
+import { InformationContextProvider } from 'sections/home/context/InformationContext'
+
 import { initTranslations } from 'utils/i18n'
 
 import { Home } from 'sections/home/Home'
@@ -27,7 +29,9 @@ const HomePage: FC<Page> = async ({ params: { locale } }) => {
       locale={locale}
       resources={i18n.resources}
     >
-      <Home />
+      <InformationContextProvider>
+        <Home />
+      </InformationContextProvider>
     </TranslationsProvider>
   )
 }

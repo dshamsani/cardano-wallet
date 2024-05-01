@@ -1,3 +1,4 @@
+'use client'
 import type { SelectChangeEvent } from '@mui/material/Select'
 import type { FC, PropsWithChildren } from 'react'
 
