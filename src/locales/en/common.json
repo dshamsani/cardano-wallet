@@ -7,7 +7,32 @@
     "title": "Select Information",
     "items": {
       "balance": "Balance",
-      "nft": "NFT List"
+      "nft": "NFT/Assets List"
     }
+  },
+
+  "informationBalance": {
+    "unit": "Unit",
+    "quantity": "Quantity"
+  },
+
+  "nftList": {
+    "asset": "Asset",
+    "quantity": "Quantity",
+    "review": "Review"
+  },
+
+  "nftListItem": {
+    "title": "Asset Information",
+    "name": "Asset Name",
+    "policy": "Policy ID",
+    "quantity": "Quantity",
+    "standard": "Standard",
+    "fingerprint": "Fingerprint",
+    "tx_hash": "Initial Mint TX Hash",
+    "burn_count": "Mint/Burn Count",
+    "extra_metadata": "Extra Onchain Metadata",
+    "metadata": "Metadata",
+    "close": "Close"
   }
 }

@@ -7,7 +7,32 @@
     "title": "Vybrat informace",
     "items": {
       "balance": "Bilance",
-      "nft": "Seznam NFT"
+      "nft": "Seznam NFT/Aktivu"
     }
+  },
+
+  "informationBalance": {
+    "unit": "Jednotka",
+    "quantity": "Množství"
+  },
+
+  "nftList": {
+    "asset": "Aktiv",
+    "quantity": "Množství",
+    "review": "Recenze"
+  },
+
+  "nftListItem": {
+    "title": "Informace o aktivu",
+    "name": "Název aktiva",
+    "policy": "Policy ID",
+    "quantity": "Množství",
+    "standard": "Standard",
+    "fingerprint": "Fingerprint",
+    "tx_hash": "Úvodní Mint TX Hash",
+    "burn_count": "Počet  Mint/Burn",
+    "extra_metadata": "Extra Onchain Metadata",
+    "metadata": "Metadata",
+    "close": "Zavřít"
   }
 }

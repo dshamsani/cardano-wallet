@@ -37,7 +37,7 @@ export const useInformation = () => {
 export const InformationContextProvider: FC<PropsWithChildren> = ({
   children
 }) => {
-  const [selectedOption, setSelectedOption] = useState<string>('balance')
+  const [selectedOption, setSelectedOption] = useState<string>('nft')
 
   const handleOptionChange = useCallback(
     (event: SelectChangeEvent) => {

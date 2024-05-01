@@ -8,6 +8,18 @@ const blockfrostClient = new BlockFrostAPI({
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const id = searchParams.get('id')
-  const addresses = await blockfrostClient.addresses(id as string)
-  return NextResponse.json(addresses)
+  const asset = searchParams.get('asset')
+
+  if (id) {
+    const addresses = await blockfrostClient.addresses(id as string)
+    const assets = await blockfrostClient.assets()
+
+    return NextResponse.json({ addresses, assets })
+  }
+
+  if (asset) {
+    const assetById = await blockfrostClient.assetsById(asset)
+
+    return NextResponse.json({ assetById })
+  }
 }
