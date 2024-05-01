@@ -32,7 +32,7 @@ const getCookiesLocale = () => {
 
 const i18nNamespaces = ['common']
 
-export const RootLayout: FC<PropsWithChildren> = async ({ children }) => {
+const RootLayout: FC<PropsWithChildren> = async ({ children }) => {
   const locale = getCookiesLocale()
 
   const i18n = await Promise.resolve(initTranslations(locale, i18nNamespaces))
