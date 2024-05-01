@@ -1,3 +1,13 @@
 {
-  "pageTitle": "Hlavní stránka"
+  "pageTitle": "Hlavní stránka",
+
+  "informationTitle": "Informace o peněžence",
+
+  "informationControl": {
+    "title": "Vybrat informace",
+    "items": {
+      "balance": "Bilance",
+      "nft": "Seznam NFT"
+    }
+  }
 }

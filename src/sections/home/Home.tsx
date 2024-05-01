@@ -1,31 +1,36 @@
 'use client'
 import type { FC } from 'react'
 
+import { InformationContextProvider } from './context/InformationContext'
+
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
 
 import { WalletFetch } from './WalletFetch'
 
+import { InformationTitle } from './components/InformationTitle'
+import { InformationControl } from './components/InformationControl'
+
 export const Home: FC = () => {
   return (
-    <Container
-      sx={{
-        backgroundColor: 'background.paper',
-        width: 1,
-        minHeight: 1,
-        overflow: 'hidden'
-      }}
-    >
-      <WalletFetch>
-        {walletInfo => (
-          <Box>
-            <Typography variant="h4" gutterBottom>
-              Wallet Information
-            </Typography>
-          </Box>
-        )}
-      </WalletFetch>
-    </Container>
+    <InformationContextProvider>
+      <Container
+        sx={{
+          backgroundColor: 'background.paper',
+          width: 1,
+          minHeight: '93.5vh',
+          overflow: 'hidden'
+        }}
+      >
+        <WalletFetch>
+          {walletInfo => (
+            <Box sx={{ mt: 10 }}>
+              <InformationTitle />
+              <InformationControl />
+            </Box>
+          )}
+        </WalletFetch>
+      </Container>
+    </InformationContextProvider>
   )
 }

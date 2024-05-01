@@ -1,3 +1,13 @@
 {
-  "pageTitle": "Home"
+  "pageTitle": "Home",
+
+  "informationTitle": "Wallet Information",
+
+  "informationControl": {
+    "title": "Select Information",
+    "items": {
+      "balance": "Balance",
+      "nft": "NFT List"
+    }
+  }
 }

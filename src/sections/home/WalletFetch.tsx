@@ -1,6 +1,8 @@
 import type { WalletInfo } from 'types/blockfrost'
 import type { FC, ReactNode } from 'react'
 
+import { LoadingSpinner } from './components/LoadingSpinner'
+
 import { useEffect, useState } from 'react'
 
 import { PROJECT_ID } from 'constants/blockfrost'
@@ -11,7 +13,6 @@ interface WalletFetchProps {
 
 export const WalletFetch: FC<WalletFetchProps> = ({ children }) => {
   const [walletInfo, setWalletInfo] = useState<WalletInfo | null>(null)
-  console.log('walletInfo:', walletInfo)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)
 
@@ -37,5 +38,9 @@ export const WalletFetch: FC<WalletFetchProps> = ({ children }) => {
     fetchData()
   }, [])
 
-  return !loading && !error && walletInfo && children(walletInfo)
+  return loading ? (
+    <LoadingSpinner />
+  ) : (
+    !error && walletInfo && children(walletInfo)
+  )
 }

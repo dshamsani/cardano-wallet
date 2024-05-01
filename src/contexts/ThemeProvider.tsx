@@ -27,7 +27,7 @@ export const useThemeSwitch = () => {
 }
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children, locale }) => {
-  const [mode, setMode] = useState<themeModes>('light')
+  const [mode, setMode] = useState<themeModes>('dark')
 
   const toggleColorMode = () => {
     setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'))

@@ -8,5 +8,5 @@ export interface WalletInfo {
   amount: WalletInfoAmountItem[]
   script: boolean
   stake_address: string
-  type: string
+  type: 'byron' | 'shelley'
 }
