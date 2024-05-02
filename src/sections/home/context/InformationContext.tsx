@@ -12,12 +12,18 @@ import {
 
 interface InformationContextValues {
   selectedOption: string
+  projectId: string | undefined
   handleOptionChange: (event: SelectChangeEvent) => void
+  handleProjectIdSearch: (value: string) => void
 }
 
 const InformationContext = createContext<InformationContextValues>({
   selectedOption: '',
+  projectId: undefined,
   handleOptionChange: () => {
+    throw new Error('Function is not implemented.')
+  },
+  handleProjectIdSearch: () => {
     throw new Error('Function is not implemented.')
   }
 })
@@ -38,6 +44,7 @@ export const InformationContextProvider: FC<PropsWithChildren> = ({
   children
 }) => {
   const [selectedOption, setSelectedOption] = useState<string>('nft')
+  const [projectId, setProjectId] = useState<string | undefined>()
 
   const handleOptionChange = useCallback(
     (event: SelectChangeEvent) => {
@@ -46,12 +53,21 @@ export const InformationContextProvider: FC<PropsWithChildren> = ({
     [setSelectedOption]
   )
 
+  const handleProjectIdSearch = useCallback(
+    (value: string) => {
+      setProjectId(value)
+    },
+    [setProjectId]
+  )
+
   const contextState: InformationContextValues = useMemo(
     () => ({
       selectedOption,
-      handleOptionChange
+      projectId,
+      handleOptionChange,
+      handleProjectIdSearch
     }),
-    [selectedOption, handleOptionChange]
+    [selectedOption, projectId, handleOptionChange, handleProjectIdSearch]
   )
 
   return (

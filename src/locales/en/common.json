@@ -3,11 +3,18 @@
 
   "informationTitle": "Wallet Information",
 
+  "inputPlaceholder": "Address...",
+
+  "error": {
+    "errorTitle": "Error: Invalid address",
+    "errorDescription": "The address you entered is invalid or an error occurred during data retrieval."
+  },
+
   "informationControl": {
     "title": "Select Information",
     "items": {
       "balance": "Balance",
-      "nft": "NFT/Assets List"
+      "nft": "NFT List"
     }
   },
 
@@ -17,17 +24,18 @@
   },
 
   "nftList": {
-    "asset": "Asset",
+    "nft": "Name",
     "quantity": "Quantity",
     "review": "Review"
   },
 
   "nftListItem": {
-    "title": "Asset Information",
-    "name": "Asset Name",
+    "title": "NFT Information",
+    "name": "NFT Name",
     "policy": "Policy ID",
     "quantity": "Quantity",
     "standard": "Standard",
+    "color": "Color",
     "fingerprint": "Fingerprint",
     "tx_hash": "Initial Mint TX Hash",
     "burn_count": "Mint/Burn Count",

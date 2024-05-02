@@ -3,11 +3,18 @@
 
   "informationTitle": "Informace o peněžence",
 
+  "inputPlaceholder": "Adresa...",
+
+  "error": {
+    "errorTitle": "Chyba: Neplatná adresa",
+    "errorDescription": "Zadaná adresa je neplatná nebo došlo k chybě při načítání dat."
+  },
+
   "informationControl": {
     "title": "Vybrat informace",
     "items": {
       "balance": "Bilance",
-      "nft": "Seznam NFT/Aktivu"
+      "nft": "Seznam NFT"
     }
   },
 
@@ -17,17 +24,18 @@
   },
 
   "nftList": {
-    "asset": "Aktiv",
+    "nft": "Nazev",
     "quantity": "Množství",
     "review": "Recenze"
   },
 
   "nftListItem": {
-    "title": "Informace o aktivu",
-    "name": "Název aktiva",
+    "title": "Informace o NFT",
+    "name": "Název NFT",
     "policy": "Policy ID",
     "quantity": "Množství",
     "standard": "Standard",
+    "color": "Barva",
     "fingerprint": "Fingerprint",
     "tx_hash": "Úvodní Mint TX Hash",
     "burn_count": "Počet  Mint/Burn",

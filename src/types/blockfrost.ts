@@ -4,7 +4,7 @@ export interface WalletInfoAmountItem {
 }
 
 export interface WalletInfoAssets {
-  asset: string
+  unit: string
   quantity: string
 }
 

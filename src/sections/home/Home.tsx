@@ -13,8 +13,10 @@ import { NftList } from './components/NftList/NftList'
 
 import { useInformation } from './context/InformationContext'
 
+import { DEFAULT_PROJECT_ID } from 'constants/blockfrost'
+
 export const Home: FC = () => {
-  const { selectedOption } = useInformation()
+  const { selectedOption, projectId } = useInformation()
 
   return (
     <Container
@@ -25,7 +27,9 @@ export const Home: FC = () => {
         overflow: 'hidden'
       }}
     >
-      <WalletFetch>
+      <WalletFetch
+        PROJECT_ID={projectId !== undefined ? projectId : DEFAULT_PROJECT_ID}
+      >
         {({ addresses, assets }) => (
           <Box sx={{ my: 10 }}>
             <InformationTitle />

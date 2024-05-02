@@ -12,7 +12,9 @@ export async function GET(request: Request) {
 
   if (id) {
     const addresses = await blockfrostClient.addresses(id as string)
-    const assets = await blockfrostClient.assets()
+    let assets = {}
+
+    assets = await blockfrostClient.assets()
 
     return NextResponse.json({ addresses, assets })
   }

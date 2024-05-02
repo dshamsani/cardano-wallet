@@ -7,6 +7,8 @@ import { Layout } from 'components/layout/Layout'
 
 import { ThemeProvider } from 'contexts/ThemeProvider'
 import { TranslationsProvider } from 'contexts/TranslationsProvider'
+import { QueryClientProvider } from 'contexts/QueryClientProvider'
+import { InformationContextProvider } from 'sections/home/context/InformationContext'
 
 import { initTranslations } from 'utils/i18n'
 import { FALLBACK_LOCALE } from 'constants/locale'
@@ -48,7 +50,11 @@ const RootLayout: FC<PropsWithChildren> = async ({ children }) => {
           locale={locale}
           resources={i18n.resources}
         >
-          <Layout locale={locale}>{children}</Layout>
+          <QueryClientProvider>
+            <InformationContextProvider>
+              <Layout locale={locale}>{children}</Layout>
+            </InformationContextProvider>
+          </QueryClientProvider>
         </TranslationsProvider>
       </ThemeProvider>
     </html>
